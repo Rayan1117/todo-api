@@ -3,8 +3,6 @@ const os = require('os');
 const authenticated=require('./routers/authenticated');
 const jwt=require('jsonwebtoken');
 const app = express();
-const http = require('http');
-const server = http.createServer(app);
 const PORT = 5000;
 const auth=require("./routers/authorize");
 const registration = require('./routers/registration');
@@ -20,7 +18,7 @@ app.get("/",(req,res)=>{
     res.send("hello it's working");
 })
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
     const networkInterfaces = os.networkInterfaces();
     let ipv4;
     Object.keys(networkInterfaces).forEach((key) => {
